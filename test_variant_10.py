@@ -5,7 +5,6 @@ from pathlib import Path
 
 import variant_10
 
-
 LAB_DIR = Path(__file__).resolve().parent
 
 
@@ -99,7 +98,7 @@ class Variant10Tests(unittest.TestCase):
             output_path = Path(directory) / "result.csv"
             variant_10.write_task3_csv(rows, output_path)
             with output_path.open(encoding="utf-8", newline="") as file:
-                saved_rows = list(csv.reader(file))
+                saved_rows = list(csv.reader(file, delimiter=";"))
             saved_bytes = output_path.read_bytes()
 
         self.assertEqual(saved_rows, rows)
